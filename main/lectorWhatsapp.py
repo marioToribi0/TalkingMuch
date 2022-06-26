@@ -118,7 +118,7 @@ class Archivo():
             # Reducir a número de palabras
             listaReducida = []
             for i in range(cantidad):
-                if i>len(lista):
+                if i>=len(lista):
                     break
                 listaReducida.append(lista[i])
             result[user] = listaReducida
