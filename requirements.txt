@@ -1,6 +1,6 @@
 Django==4.0.4
 gunicorn==20.0.4
-django-crispy-forms==1.6.1
+django-crispy-forms
 django-heroku
 python-decouple
 whitenoise
