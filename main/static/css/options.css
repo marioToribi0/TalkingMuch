@@ -1,0 +1,8 @@
+.option li{
+    font-weight: 600 !important;
+    color: red;
+}
+.option span{
+    font-weight: 600 !important;
+    color: black;
+}

@@ -1,0 +1,210 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block title %}Upload a file{% endblock %}
+
+{% block css %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="{% static 'css/results.css' %}">
+{% endblock %}
+
+{% block content %}
+<div>
+    <div class="option_1 option" style="display: none;width:800 ;height:450;">
+        <button type="button" class="btn btn-outline-success">Document</button>
+    </div>
+    <div class="option_2 option" style="display: none;width:800 ;height:450;">
+        <h4>Most used words</h4>
+        <canvas width="800" height="450" id="chart_2" style="background-color: white;"></canvas>
+        <hr>
+    </div>
+    
+    <div class="option_3 option" style="display: none">
+        <h4>Show message frequency by period</h4>
+        <canvas width="800" height="450" id="chart_3" style="background-color: white;width:800; height:450;"></canvas>
+        <hr>
+    </div>
+    
+    <div class="option_4 option" style="display: none">
+        <h4>Search for a phrase</h4>
+        <canvas width="800" height="450" id="chart_4" style="background-color: white;width:800; height:450;"></canvas>
+        <hr>
+    </div>
+    
+    <div class="option_5 option" style="display: none">
+        <h4>Messages per person</h4>
+        <canvas width="800" height="450" id="chart_5" style="background-color: white;width:800; height:450;"></canvas>
+        <hr>
+    </div>
+    
+    <div class="option_6 option" style="display: none">
+        <h4>Most common words per person</h4>
+        <div class="list">
+
+        </div>
+        <hr>
+    </div>
+    
+    <div class="option_7 option" style="display: none">
+        <h4>Messages deleted by person</h4>
+        <canvas width="800" height="450" id="chart_7" style="background-color: white;width:800; height:450;"></canvas>
+    </div>
+
+    <!-- Extract data from session -->
+    <script>var i;var value;const charts = [];
+        function isDict(v) {
+            return typeof v==='object' && v!==null && !(v instanceof Array) && !(v instanceof Date);
+        }
+    </script>
+    {% for data in results %}
+        <script type="text/javascript">
+            i = {{data.0|safe}};
+            value = {{data.1|safe}};
+            console.log(i)
+            document.querySelector(`div.option_${i}`).style.display = 'block';
+            if (i==2 || i==3){
+                const labels=[];
+                const data_R = [];
+
+                value.forEach(function(el){
+                    labels.push(el[0]);
+                    data_R.push(el[1]);
+                })
+                option = ['x','y'];
+                charts.push(new Chart(document.getElementById(`chart_${i}`), {
+                    type: 'bar',
+                    data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                        label: document.querySelector(`div.option_${i} h4`).textContent,
+                        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                        data: data_R
+                        }
+                    ]
+                    },
+                    options: {
+                        indexAxis: option[i-2],
+    // Elements options apply to all of the options unless overridden in a dataset
+    // In this case, we are setting the border of each horizontal bar to be 2px wide
+                    legend: { display: true },
+                    title: {
+                        display: true,
+                        text: document.querySelector(`div.option_${i} h4`).textContent
+                    }
+                    }
+                }))
+
+            }
+            else if (i==5 || i==7){
+                const labels=[];
+                const data_R = [];
+                
+                if (i==5){
+                    var arr = [];
+                    for (var key in value) {
+                        if (value.hasOwnProperty(key)) {
+                            arr.push( [ value[key], key ] );
+                        }
+                    }
+                    value = arr;
+                }
+
+                value.forEach(function(el){
+                    labels.push(el[1]);
+                    data_R.push(el[0]);
+                });
+
+                charts.push(new Chart(document.getElementById(`chart_${i}`), {
+                    type: 'pie',
+                    data: {
+                    labels: labels,
+                    datasets: [{
+                        label: document.querySelector(`div.option_${i} h4`).textContent,
+                        backgroundColor: ["#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2"],
+                        data: data_R
+                    }]
+                    },
+                    options: {
+                    title: {
+                        display: true,
+                        text: document.querySelector(`div.option_${i} h4`).textContent
+                    }
+                    }
+                }))
+            }
+            else if (i==4){
+                const labels=[];
+                const data_R = [];
+                var arr = [];
+                for (var key in value){
+                    arr.push([value[key][1], key]);
+                }
+                value = arr;
+
+                value.forEach(function(el){
+                    labels.push(el[1]);
+                    data_R.push(el[0]);
+                });
+
+
+                console.log(data_R[1])
+
+                charts.push(new Chart(document.getElementById(`chart_${i}`), {
+                    type: 'polarArea',
+                    data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                        label: document.querySelector(`div.option_${i} h4`).textContent,
+                        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                        data: data_R
+                        }
+                    ]
+                    },
+                    options: {
+                    title: {
+                        display: true,
+                        text: document.querySelector(`div.option_${i} h4`).textContent
+                    }
+                    }
+                }));
+            }
+            else if (i==6){
+                var div = document.querySelector(`div.option_${i} div.list`); 
+
+                const labels=[];
+                const data_R = [];
+                var arr = [];
+                for (var key in value){
+                    arr.push([value[key], key]);
+                }
+                value = arr;
+
+                value.forEach(function(el){
+                    labels.push(el[1]);
+                    data_R.push(el[0]);
+                });
+
+                console.log(value)
+
+                for (let i=0; i<value.length; i++){
+                    var people = document.createElement("h5");
+                    var ul = document.createElement("ul");
+                    people.appendChild(document.createTextNode(value[i][1]))
+                    ul.appendChild(people);
+                    ul.classList = "text-truncate"
+                    for (let j=0; j<value[i][0].length; j++){
+                        var li = document.createElement("li");
+                        li.appendChild(document.createTextNode(`"${value[i][0][j][1]}": ${value[i][0][j][0]} `));
+                        ul.appendChild(li);
+                    }
+                    div.appendChild(ul);
+                }
+            }
+        </script>
+    {% endfor %}
+</div>
+{% endblock %} 

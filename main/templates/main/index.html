@@ -1,0 +1,42 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block title %}TalkingMuch{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/description.css' %}">
+{% endblock %}
+
+{% block content %}
+TalkingMuch is a application to analize a conversation from whatsapp. This projects was created using python and simples library. However, this application show important data through the lecture. To use it you need downloand the specific conversation from whatsapp throught the next steps. Actually the application is more precise with the language English.
+<ul>
+    <li>
+        Select the conversation
+    </li>
+    <li>
+        Press on settings
+        
+    </li>
+    <li>
+        Export chat
+    </li>
+    <li>
+        Without media
+    </li>
+    <li>
+        <a id="upload" href="/forms" style="padding-left: 0;">Upload the conversation</a>
+    </li>
+</ul>
+<br>
+<div class="row">
+  <div class="col-lg-3 col-sm-6 text-center pb-3"><img src="{% static 'img/menu.png' %}" alt="Settings whatsapp"></div>  
+  <div class="col-lg-3 col-sm-6 text-center pb-3"><img src="{% static 'img/more.png' %}" alt="More whatsapp"></div>  
+  <div class="col-lg-3 col-sm-6 text-center pb-3"><img src="{% static 'img/export.png' %}" alt="More whatsapp"></div>  
+  <div class="col-lg-3 col-sm-6 text-center pb-3"><img src="{% static 'img/without.png' %}" alt="More whatsapp"></div>  
+</div>
+
+
+
+
+{% endblock %}

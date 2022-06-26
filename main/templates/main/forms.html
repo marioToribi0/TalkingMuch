@@ -1,0 +1,83 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block title %}Upload a file{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block css %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/options.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <form method="POST" action="#">
+        {% csrf_token %}
+        {{form.size|as_crispy_field}}
+        <div class="row options">
+            <div class="col-lg-3">
+                {{form.options_1|as_crispy_field}}
+            </div>
+            <div class="col-lg-3">
+                {{form.options_2|as_crispy_field}}
+            </div>
+            <div class="col-lg-3">
+                {{form.options_3|as_crispy_field}}
+            </div>
+            <div class="col-lg-3">
+                {{form.options_4|as_crispy_field}}
+            </div>
+            <div class="col-lg-3">
+                {{form.options_5|as_crispy_field}}
+            </div>
+            <div class="col-lg-3">
+                {{form.options_6|as_crispy_field}}
+            </div>
+            <div class="col-lg-3">
+                {{form.options_7|as_crispy_field}}
+            </div>
+        </div>
+        <hr>
+        <!-- Option 2 -->
+        <div class="row option mt-2" id="option_2">
+            <ul>
+                <li><span>Most used words</span></li>
+            </ul>
+                <div class="col-6">
+                    {{form.words|as_crispy_field}}
+                </div>
+                <div class="col-6">
+                    {{form.letters|as_crispy_field}}
+                </div>
+        </div>
+        <!-- Option 3 -->
+        <div class="row option mt-2" id="option_3">
+            <ul>
+                <li><span>Show message frequency by period</span></li>
+            </ul>
+                <div class="col-6">
+                    {{form.date|as_crispy_field}}
+                </div>
+                <div class="col-6">
+                    {{form.cant|as_crispy_field}}
+                </div>
+        </div>
+        <!-- Option 4 -->
+        <div class="row option mt-2" id="option_4">
+            <ul>
+                <li><span>Search for a phrase</span></li>
+            </ul>
+                <div class="col-12">
+                    {{form.phrase|as_crispy_field}}
+                </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-outline-success">Next</button>
+    </form>
+
+    <script src="{% static 'js/form.js' %}"></script>
+{% endblock %}

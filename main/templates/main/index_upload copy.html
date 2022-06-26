@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>TalkingMuch - Upload a file</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- Bootstrap CSS v5.2.0-beta1 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+  {% load static %}
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Varela+Round" rel="stylesheet"><link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.10/css/all.css'><link rel="stylesheet" href="{% static 'css/style_upload.css' %}">
+
+</head>
+<body>
+  <!-- Image and text -->
+<nav class="navbar navbar-light">
+  <a class="navbar-brand" href="#">
+    <img src="{% static 'img/A-Hotel.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+    TalkingMuch
+  </a>
+</nav>
+<!-- partial:index.partial.html -->
+<div class="wrapper">
+  <div class="container">
+    <h1>Upload a file</h1>
+    <form class="upload-container dropzone" enctype="multipart/form-data" method="POST" action="#" onclick="document.getElementById('id_file').click(); document.getElementById('text-loading').innerHTML = 'Loading...';">
+      {% csrf_token %}
+      <div class="border-container ">
+        <div class="icons fa-4x">
+          <i class="fas fa-file-image" data-fa-transform="shrink-3 down-2 left-6 rotate--45"></i>
+          <i class="fas fa-file-alt" data-fa-transform="shrink-2 up-4"></i>
+          <i class="fas fa-file-pdf" data-fa-transform="shrink-3 down-2 right-6 rotate-45"></i>
+        </div>
+        <div enctype="multipart/form-data">
+          {{form.as_p}}
+          
+        </div>
+        <p><a href="#" id="file-browser">Browse</a> your computer.</p>
+      </div>
+      <button type="submit" id="submit" style="display: none;"></button>
+    </form>
+    <div>
+
+    </div>
+    <div>
+      <h4 id="text-loading" style="display: inline;padding-right: 20px;"></h4>
+      <button type="submit" style="display: none;" id="send" onclick="document.getElementById('submit').click()">Send</button>
+    </div>
+    
+  </div>
+  
+</div>
+<!-- partial -->
+  <script src='https://use.fontawesome.com/releases/v5.0.10/js/all.js'></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+  </script><script  src="{% static 'js/script_upload.js' %}"></script>
+  
+</body>
+</html>
