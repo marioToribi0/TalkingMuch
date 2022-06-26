@@ -140,16 +140,17 @@ def results(response):
     
     # Redirect if not exist the data
     redirect_file = response.session.get('redirect_file', None)
+    
+    results = response.session.get('results', None)
+    if results==None:
+        return redirect('forms')
+    
     send_dict = {'results': results, 'check': False}
     
     
     if redirect!=None:
         send_dict['redirect'] = redirect
         send_dict['check'] = True
-    
-    results = response.session.get('results', None)
-    if results==None:
-        return redirect('forms')
     
     return render(response, 'main/results.html', send_dict)
 
