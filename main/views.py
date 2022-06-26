@@ -137,11 +137,21 @@ def upload(response):
     return render(response, 'main/upload.html', {'form': form, 'redirect_file': redirect_file})
 
 def results(response):
+    
+    # Redirect if not exist the data
+    redirect_file = response.session.get('redirect_file', None)
+    send_dict = {'results': results, 'check': False}
+    
+    
+    if redirect!=None:
+        send_dict['redirect'] = redirect
+        send_dict['check'] = True
+    
     results = response.session.get('results', None)
     if results==None:
         return redirect('forms')
     
-    return render(response, 'main/results.html', {'results': results})
+    return render(response, 'main/results.html', send_dict)
 
 def file_result(response):
     data = response.session.get('results')

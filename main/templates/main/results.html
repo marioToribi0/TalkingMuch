@@ -206,5 +206,9 @@
             }
         </script>
     {% endfor %}
+    {% if check %}
+        <a style="text-decoration: none;display: none;" target="_blank" id="redirect" href="/file_results"></a>
+        <script>document.querySelector("#redirect").click()</script>
+    {% endif %}
 </div>
 {% endblock %} 
