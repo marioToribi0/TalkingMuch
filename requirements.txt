@@ -1,4 +1,4 @@
-Django==4.0.4
+Django
 gunicorn==20.0.4
 django-crispy-forms
 django-heroku
@@ -8,4 +8,4 @@ psycopg2
 dj-database-url
 django-bootstrap4
 crispy-bootstrap4
-WhiteNoise==2.0.6
+WhiteNoise
