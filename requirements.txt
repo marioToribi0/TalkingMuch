@@ -6,3 +6,6 @@ python-decouple
 whitenoise
 psycopg2
 dj-database-url
+django-bootstrap4
+crispy-bootstrap4
+WhiteNoise==2.0.6
