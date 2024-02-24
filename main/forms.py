@@ -7,6 +7,9 @@ class ReaderForm(forms.ModelForm):
     class Meta:
         model = Reader
         fields = ['file']
+        widgets = {
+            'file': forms.FileInput(attrs={'accept': '.txt'})
+        }
         
 class DataForm(forms.ModelForm):
     class Meta:
