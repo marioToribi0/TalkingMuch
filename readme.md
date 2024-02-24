@@ -6,3 +6,6 @@ run:
 docker build -t talkingMuch .
 docker run -p 80:80 talkingMuch 
 ```
+open in the browser:
+
+http://localhost:80
