@@ -1,0 +1,17 @@
+#content img {
+    border: 3px solid black;
+    border-radius: 4px;
+    width: 150px;
+  }
+  
+#content img:hover {
+    box-shadow: 0 0 2px 1px black;
+  }
+
+#upload{
+    color: white;
+    transition: 1s;
+}
+#upload:hover{
+    color: whitesmoke;
+}

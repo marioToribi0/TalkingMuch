@@ -1,0 +1,13 @@
+h4{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+div.option{
+    margin-bottom: 40px;
+}
+
+canvas{
+    border: 2px solid black !important;
+    padding: 2%;
+}

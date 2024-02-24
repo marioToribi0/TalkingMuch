@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;1,300&family=Roboto&display=swap');
+*{
+    font-size: 'Monserrat';
+}
+nav{
+    border-bottom: 0.2em solid #ADCF9F;
+    font-weight: 500;
+    background-color: white !important;
+}
+body{
+    background-color: #76BA99;
+}
+
+a{
+    padding-left: 2%;
+}
+a{
+    padding-left: 2%;
+}
+nav span{
+    position: relative;
+    right: 20%;
+    text-align: end;
+    font-size: 1em;
+    font-weight: 500;
+}
+.row{
+    margin: 0;
+}
+
+.title:hover{
+    -webkit-animation: tiembla 3s infinite;
+  }
+  @-webkit-keyframes tiembla{
+    0%  { -webkit-transform:rotateZ(-5deg); }
+    25% { -webkit-transform:rotateZ( 0deg) scale(.9); }
+    50%{ -webkit-transform:rotateZ( 5deg);}
+    75%{ -webkit-transform:rotateZ( 0deg) scale(.9);}
+    100%{ -webkit-transform:rotateZ( -5deg); }
+  }
+
+
+.footer{
+    border-top: 0.2em solid #ADCF9F;
+    background-color: white;
+    -webkit-text-stroke: 0.1px white; /* width and color */
+    color: black;
+    font-weight: 700;
+    padding: 2em;
+    margin: 0;
+}
+
+#content{
+    padding: 5% 10%;
+}
+
+ul{
+    list-style-type: square;
+}
+
+html, body, #root, .app {
+    height: 100%;
+}
+#content {
+    min-height: 100%;
+    margin-bottom: -100px;
+    padding-bottom: 100px;
+}
+.footer {
+    margin-top: 2%;
+    width: 100%;
+}
